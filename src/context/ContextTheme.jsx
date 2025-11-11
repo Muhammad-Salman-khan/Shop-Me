@@ -1,0 +1,28 @@
+import { createContext } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+export const ThemeContext = createContext();
+
+const ThemeProviderContext = ({ children }) => {
+  const [Theme, setTheme] = useState("light");
+  useEffect(() => {
+    const root = document.documentElement;
+    if (Theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [Theme]);
+
+  const switchTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+  return (
+    <>
+      <ThemeContext.Provider value={{ Theme, switchTheme }}>
+        {children}
+      </ThemeContext.Provider>
+    </>
+  );
+};
+export default ThemeProviderContext;

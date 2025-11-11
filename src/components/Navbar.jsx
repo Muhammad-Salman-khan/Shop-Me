@@ -1,12 +1,15 @@
+import { ThemeContext } from "../context/ContextTheme.jsx";
+import { useContext } from "react";
 const Navbar = () => {
+  const { Theme, switchTheme } = useContext(ThemeContext);
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 shadow transition-colors duration-300">
+      <div className="bg-gray-100 dark:bg-slate-950 border-b-2 border-gray-600 shadow transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             <div className="flex items-center">
               <span className="ml-2 text-xl font-bold text-gray-800 dark:text-white">
-                Brand
+                {Theme}
               </span>
             </div>
             <div className="flex items-center">
@@ -30,6 +33,7 @@ const Navbar = () => {
               </button>
               <button
                 id="theme-toggle"
+                onClick={switchTheme}
                 className="ml-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white transition-colors duration-300"
               >
                 <svg

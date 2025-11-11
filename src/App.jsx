@@ -6,36 +6,11 @@ import ProductCard from "./components/ProductCard.jsx";
 import GridLayer from "./components/GridLayer.jsx";
 import { Link } from "react-router";
 import Navbar from "./components/Navbar.jsx";
+import { useContext } from "react";
+import { ProductContext } from "./context/ContextProduct.jsx";
 
 const App = () => {
-  const [products, setProduct] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    const Fetched = async () => {
-      try {
-        const res = await fetch(`/api/products`, { signal });
-        if (!res.ok)
-          throw new Error(` faild to fetched products ${res.status}`);
-        const data = await res.json();
-        setProduct(data);
-        setLoading(false);
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          console.error(`fetch Faild: ${error}`);
-          setError(error.message || "Something went wrong");
-          setLoading(false);
-        }
-      }
-    };
-    Fetched();
-    return () => controller.abort();
-  }, []);
-  console.log(products);
-
+  const { products, loading, error } = useContext(ProductContext);
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
@@ -81,7 +56,7 @@ const App = () => {
   }
   return (
     <>
-      <div className="min-h-screen max-w-screen bg-white text-black dark:bg-slate-950 dark:text-white ">
+      <div className="min-h-screen max-w-screen bg-gray-100 text-black dark:bg-slate-950 dark:text-white ">
         <Navbar />
         <GridLayer>
           {products.map(
