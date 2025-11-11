@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 export const ThemeContext = createContext();
@@ -26,3 +27,6 @@ const ThemeProviderContext = ({ children }) => {
   );
 };
 export default ThemeProviderContext;
+export const useTheme = () => {
+  return useContext(ThemeContext);
+};

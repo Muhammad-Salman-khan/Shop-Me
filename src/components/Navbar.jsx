@@ -1,7 +1,7 @@
-import { ThemeContext } from "../context/ContextTheme.jsx";
-import { useContext } from "react";
+import { useTheme } from "../context/ContextTheme.jsx";
+
 const Navbar = () => {
-  const { Theme, switchTheme } = useContext(ThemeContext);
+  const { Theme, switchTheme } = useTheme();
   return (
     <>
       <div className="bg-gray-100 dark:bg-slate-950 border-b-2 border-gray-600 shadow transition-colors duration-300">

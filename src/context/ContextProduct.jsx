@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 export const ProductContext = createContext();
@@ -40,3 +41,7 @@ const ContextProduct = ({ children }) => {
 };
 
 export default ContextProduct;
+
+export const useProduct = () => {
+  return useContext(ProductContext);
+};

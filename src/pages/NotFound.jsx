@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { animate } from "animejs";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const NotFound = () => {
   useEffect(() => {
@@ -1209,13 +1209,15 @@ const NotFound = () => {
               </defs>
             </svg>
           </div>
-          <button
-            className="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold 
+          <Link to="/">
+            <button
+              className="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold 
             hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-100 
             dark:hover:bg-gray-600 transition"
-          >
-            Go Home
-          </button>
+            >
+              Go Home
+            </button>
+          </Link>
         </div>
       </div>
     </>

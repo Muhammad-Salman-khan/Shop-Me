@@ -1,16 +1,13 @@
 import { Alert, Stack } from "@mui/material";
-import { useState, useEffect } from "react";
 import { Oval } from "react-loader-spinner";
 import NotFound from "./pages/NotFound.jsx";
-import ProductCard from "./components/ProductCard.jsx";
-import GridLayer from "./components/GridLayer.jsx";
-import { Link } from "react-router";
+import { Route, Routes } from "react-router";
 import Navbar from "./components/Navbar.jsx";
-import { useContext } from "react";
-import { ProductContext } from "./context/ContextProduct.jsx";
+import Home from "./pages/Home.jsx";
+import { useProduct } from "./context/ContextProduct.jsx";
 
 const App = () => {
-  const { products, loading, error } = useContext(ProductContext);
+  const { products, loading, error } = useProduct();
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
@@ -58,31 +55,10 @@ const App = () => {
     <>
       <div className="min-h-screen max-w-screen bg-gray-100 text-black dark:bg-slate-950 dark:text-white ">
         <Navbar />
-        <GridLayer>
-          {products.map(
-            ({
-              id,
-              name,
-              description,
-              price,
-              quantity,
-              category,
-              rating,
-              image,
-            }) => (
-              <ProductCard
-                key={id}
-                name={name}
-                description={description}
-                price={price}
-                quantity={quantity}
-                category={category}
-                rating={rating}
-                image={image}
-              />
-            )
-          )}
-        </GridLayer>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
     </>
   );
