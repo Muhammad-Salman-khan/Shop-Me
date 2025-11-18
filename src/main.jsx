@@ -5,13 +5,16 @@ import App from "./App.jsx";
 import ContextProduct from "./context/ContextProduct.jsx";
 import ThemeProviderContext from "./context/ContextTheme.jsx";
 import { BrowserRouter } from "react-router";
+import ContextCart from "./context/ContextCart.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProviderContext>
         <ContextProduct>
-          <App />
+          <ContextCart>
+            <App />
+          </ContextCart>
         </ContextProduct>
       </ThemeProviderContext>
     </BrowserRouter>
