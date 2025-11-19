@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <GridLayer>
       {products.map((products) => (
-        <ProductCard products={products} />
+        <ProductCard key={products.id} products={products} />
       ))}
     </GridLayer>
   );

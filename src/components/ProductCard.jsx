@@ -4,9 +4,7 @@ import { useCart } from "../context/ContextCart.jsx";
 import { useProduct } from "../context/ContextProduct.jsx";
 
 const ProductCard = ({ products }) => {
-  const { Cart, AddToCart } = useCart();
-  console.log(Cart);
-
+  const { AddToCart } = useCart();
   return (
     <>
       <div
