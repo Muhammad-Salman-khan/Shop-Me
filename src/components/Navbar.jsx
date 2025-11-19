@@ -69,7 +69,7 @@ const Navbar = () => {
             {showDropdown && (
               <div
                 className="absolute right-0 mt-2 w-80 bg-gray-100 text-black dark:bg-slate-950 
-          dark:text-white border rounded shadow-lg z-50"
+          dark:text-white p-2 rounded shadow-lg z-50"
               >
                 <div className="p-4">
                   <h2 className="font-semibold text-lg mb-2">Cart Items</h2>
@@ -87,7 +87,7 @@ const Navbar = () => {
                             <div>
                               <p className="font-semibold">{item.name}</p>
                               <p className="text-sm text-gray-500 dark:text-gray-400">
-                                {item.qty} × ${item.price}
+                                {item.quantity} × ${item.price}
                               </p>
                             </div>
 
